@@ -1,14 +1,14 @@
 import React from 'react';
 import About from '../../Components/About/About';
 import Banner from '../../Components/Banner/Banner';
-import Serives from '../../Components/Services/Serives';
+import Services from '../../Components/Services/Services';
 import Testimonial from '../../Components/Testimonial/Testimonial';
 
 const Home = () => {
     return (
         <div className='mt-4'>
             <Banner></Banner>
-            <Serives></Serives>
+            <Services></Services>
             <About></About>
             <Testimonial></Testimonial>
         </div>

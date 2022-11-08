@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
             element: <Service></Service>
         },
         {
-            path: '/details',
+            path: '/services/1',
             element: <Deatails></Deatails>
         },
     ]
