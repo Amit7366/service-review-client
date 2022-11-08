@@ -15,8 +15,14 @@ const Header = () => {
           Flowbite
         </span>
       </Navbar.Brand>
-      <div className="flex md:order-2">
-        <Button>Get started</Button>
+      <div className="flex md:order-2 gap-2">
+        <Link>
+            <Button size="xs" gradientDuoTone="purpleToBlue">Register</Button>
+        </Link>
+        <Link>
+            <Button size="xs" gradientDuoTone="cyanToBlue">Login</Button>
+        </Link>
+        
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
@@ -28,6 +34,28 @@ const Header = () => {
         <li>
           <Link to='/services' className="block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white">
             Services
+          </Link>
+        </li>
+        <li>
+          <Link to='/services' className="block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white">
+            My Reviews
+          </Link>
+        </li>
+        <li>
+          <Link to='/services' className="block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white">
+            Add Service
+          </Link>
+        </li>
+        <li>
+          <Link to='/blogs' className="block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white">
+            Blog
+          </Link>
+        </li>
+        <li>
+          <Link to='/services' className="block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white">
+            <Button gradientMonochrome="failure" size='xs'>
+                Logout
+            </Button>
           </Link>
         </li>
        
