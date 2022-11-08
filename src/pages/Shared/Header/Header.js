@@ -16,10 +16,10 @@ const Header = () => {
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2 gap-2">
-        <Link>
+        <Link to='/register'>
             <Button size="xs" gradientDuoTone="purpleToBlue">Register</Button>
         </Link>
-        <Link>
+        <Link to='/login'>
             <Button size="xs" gradientDuoTone="cyanToBlue">Login</Button>
         </Link>
         
