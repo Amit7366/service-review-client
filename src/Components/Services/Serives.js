@@ -50,9 +50,9 @@ const Serives = () => {
         </div>
       </div>
       <div className="w-full text-center">
-        <Link className="inline-block">
+        <Link to={'/services'} className="inline-block">
         <Button gradientMonochrome="info">
-      See All Service
+            See All Service
         </Button>
         </Link>
 
