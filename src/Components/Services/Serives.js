@@ -1,5 +1,6 @@
 import { Button, Card } from "flowbite-react";
 import React from "react";
+import {Link} from 'react-router-dom'
 
 const Serives = () => {
   return (
@@ -48,10 +49,13 @@ const Serives = () => {
           </Card>
         </div>
       </div>
-      <div className="w-full">
-      <Button gradientMonochrome="info" className="mx-auto">
+      <div className="w-full text-center">
+        <Link className="inline-block">
+        <Button gradientMonochrome="info">
       See All Service
-    </Button>
+        </Button>
+        </Link>
+
       
       </div>
     </div>
