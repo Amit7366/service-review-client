@@ -3,8 +3,8 @@ import { Button, Label, TextInput } from "flowbite-react";
 
 const Register = () => {
     return (
-        <div className="w-full flex flex-col-reverse md:flex-row justify-center items-center my-4 px-4">
-      <div className="w-1/3">
+        <div className="w-full flex flex-col-reverse md:flex-row justify-center items-center my-4 px-8 md:px-4">
+      <div className="w-full md:w-1/3">
         <h2 className="text-3xl font-semibold text-blue-500">Register</h2>
         <form className="flex flex-col gap-4">
           <div>
@@ -12,7 +12,7 @@ const Register = () => {
               <Label value="Name" />
             </div>
             <TextInput
-              type="test"
+              type="text"
               placeholder="name"
               required={true}
             />
@@ -48,7 +48,7 @@ const Register = () => {
           <Button type="submit" gradientDuoTone="purpleToBlue">Register</Button>
         </form>
       </div>
-      <div className="w-2/3 text-center">
+      <div className="w-full md:w-2/3 text-center">
             <h2 className="text-4xl text-green-500 font-extrabold">Create Your Account !</h2>
             <p className="text-sm font-semibold text-gray-400">Register with your information</p>
       </div>
