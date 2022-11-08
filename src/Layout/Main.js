@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from '../pages/Shared/Footer/Footer';
+import FooterCustomComponent from '../pages/Shared/Footer/FooterCustomComponent';
 import Header from '../pages/Shared/Header/Header';
 
 const Main = () => {
@@ -8,7 +8,7 @@ const Main = () => {
         <div>
             <Header></Header>
             <Outlet></Outlet>
-            <Footer></Footer>
+            <FooterCustomComponent></FooterCustomComponent>
         </div>
     );
 };
