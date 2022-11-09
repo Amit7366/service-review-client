@@ -4,14 +4,25 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { logIn } = useContext(AuthContext);
+  const { logIn,providerLogin } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () =>{
+      
+      providerLogin(googleProvider)
+      .then(result => console.log(result.user))
+      .catch(error => console.log(error))
+      navigate(from,{replace:true});
+  }
 
   const signIn = (event) => {
     event.preventDefault();
@@ -63,6 +74,7 @@ const Login = () => {
           </Button>
           <h4 className="text-center text-md text-bold">or</h4>
           <Button
+          onClick={handleGoogleSignIn}
             outline={true}
             gradientDuoTone="greenToBlue"
             className="flex items-center mx-auto"

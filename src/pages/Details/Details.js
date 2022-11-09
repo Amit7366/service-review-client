@@ -6,10 +6,13 @@ import {
   Textarea,
   TextInput,
 } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Details = () => {
+  const {user} = useContext(AuthContext);
   return (
     <div className="w-full rounded-md shadow-md flex flex-col pb-4 mb-6">
       <div>
@@ -42,31 +45,44 @@ const Details = () => {
       </div>
       <hr className="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"></hr>
       <div className="flex flex-col md:flex-row h-96 md:h-80 px-8">
+        {user ?
         <form className="flex flex-col gap-4 w-full md:w-1/2">
-          <div>
-            <div className="mb-2 block">
-              <Label htmlFor="username3" color="green" value="Your name" />
-            </div>
-            <TextInput
-              id="username"
-              placeholder="Bonnie Green"
-              required={true}
-              color="green"
-            />
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="username3" color="green" value="Your name" />
           </div>
-          <div id="textarea">
-            <div className="mb-2 block">
-              <Label htmlFor="comment" value="Your message" />
-            </div>
-            <Textarea
-              id="comment"
-              placeholder="Leave a comment..."
-              required={true}
-              rows={4}
-            />
+          <TextInput
+            id="username"
+            placeholder="Bonnie Green"
+            required={true}
+            color="green"
+          />
+        </div>
+        <div id="textarea">
+          <div className="mb-2 block">
+            <Label htmlFor="comment" value="Your message" />
           </div>
-          <Button type="submit">Review</Button>
-        </form>
+          <Textarea
+            id="comment"
+            placeholder="Leave a comment..."
+            required={true}
+            rows={4}
+          />
+        </div>
+        <Button type="submit">Review</Button>
+      </form>
+          :
+
+          <div className="w-full md:w-1/2 grid place-items-center">
+            <Link to="/login">
+              <span className="text-lg font-bold text-cyan-500">Please login to add a Review</span>
+              <Button size="lg" gradientDuoTone="cyanToBlue">
+                Login
+              </Button>
+            </Link>
+          </div>
+      }
+        
         <div className="w-full md:w-1/2 overflow-y-auto">
           <div className="w-full flex items-center shadow rounded-md py-6">
             <div className="w-1/4">
