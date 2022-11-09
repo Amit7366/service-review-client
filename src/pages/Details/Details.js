@@ -7,19 +7,21 @@ import {
   TextInput,
 } from "flowbite-react";
 import React, { useContext } from "react";
+import { FaStar } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Details = () => {
   const {user} = useContext(AuthContext);
+  const {_id,title,image,price,ratings,details} = useLoaderData();
   return (
     <div className="w-full rounded-md shadow-md flex flex-col pb-4 mb-6">
       <div>
         <PhotoProvider>
-          <PhotoView src="https://flowbite.com/docs/images/blog/image-1.jpg">
+          <PhotoView src={image}>
             <img
-              src="https://flowbite.com/docs/images/blog/image-1.jpg"
+              src={image}
               alt=""
               className="rounded-t-md w-full"
             />
@@ -28,20 +30,17 @@ const Details = () => {
       </div>
       <div className="px-4 pt-4">
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Noteworthy technology acquisitions 2021
+          {title}
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+          {details}
         </p>
         <div className="flex flex-wrap gap-2 my-4">
-          <Badge color="failure" size="sm">
-            Failure
-          </Badge>
-          <Badge color="success" size="sm">
-            Success
-          </Badge>
-        </div>
+              <Badge color="failure" size="sm">
+                ${price}
+              </Badge>
+              <div className='flex items-center gap-1 px-2 bg-teal-400 rounded-sm text-white'><FaStar></FaStar> {ratings}</div>
+            </div>
       </div>
       <hr className="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"></hr>
       <div className="flex flex-col md:flex-row h-96 md:h-80 px-8">

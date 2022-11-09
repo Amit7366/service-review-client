@@ -32,7 +32,7 @@ const ServiceCard = ({service}) => {
               </Badge>
               <div className='flex items-center gap-1 px-2 bg-teal-400 rounded-sm text-white'><FaStar></FaStar> {ratings}</div>
             </div>
-            <Link to="/services/1">
+            <Link to={`/services/${_id}`}>
               <Button gradientMonochrome="purple">View Details</Button>
             </Link>
           </div>
