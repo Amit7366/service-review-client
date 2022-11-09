@@ -4,7 +4,17 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user,logOut } = useContext(AuthContext);
+
+
+  const handleLogout = () =>{
+    logOut()
+    .then( () => {
+      
+    })
+    .catch(error => console.log(error))
+  }
+
   return (
     <Navbar fluid={true} rounded={true}>
       <Navbar.Brand href="#">
@@ -23,7 +33,7 @@ const Header = () => {
             <Tooltip content={user?.displayName}>
               <Avatar img={user?.photoURL} bordered={true} />
             </Tooltip>
-            <Button gradientMonochrome="failure" size="xs">
+            <Button onClick={handleLogout}  gradientMonochrome="failure" size="xs">
               Logout
             </Button>
           </>
