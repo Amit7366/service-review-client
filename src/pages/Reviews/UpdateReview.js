@@ -3,8 +3,10 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const UpdateReview = () => {
+  useTitle('Update Review - Plabon Fitness Trainer')
     const { user } = useContext(AuthContext);
     const review = useLoaderData();
 

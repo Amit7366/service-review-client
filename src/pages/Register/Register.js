@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Button, Label, TextInput } from "flowbite-react";
 import { AuthContext } from '../../Context/AuthProvider';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle';
 
 const Register = () => {
+  useTitle('Register - Plabon Fitness Trainer')
     const {createUser,updateUserProfile} = useContext(AuthContext);
     const [error, setError] = useState();
 

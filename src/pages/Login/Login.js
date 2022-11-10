@@ -5,8 +5,10 @@ import { AuthContext } from "../../Context/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
+import useTitle from "../../Hooks/useTitle";
 
 const Login = () => {
+  useTitle('Login - Plabon Fitness Trainer')
   const { logIn,providerLogin } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -33,11 +35,15 @@ const Login = () => {
     const password = form.password.value;
 
     logIn(email, password)
-      .then((result) => console.log(result.user))
-      .catch((error) => console.error(error));
-    form.reset();
+      .then((result) => {
+        
+
+            form.reset();
     toast.success('Successfully Loged In')
     navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+
   };
 
   return (

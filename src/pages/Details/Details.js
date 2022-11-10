@@ -13,9 +13,11 @@ import { FaStar } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 import ReviewCard from "./ReviewCard";
 
 const Details = () => {
+  useTitle('Service Details - Plabon Fitness Trainer')
   const { user } = useContext(AuthContext);
   const { _id, title, image, price, ratings, details } = useLoaderData();
   const [reviews, setReviews] = useState([]);
@@ -45,6 +47,7 @@ const Details = () => {
       userImg: user.photoURL,
       ratings:rating,
       text: text,
+      date: new Date().toString()
     };
 
     fetch('http://localhost:5000/addReview',{

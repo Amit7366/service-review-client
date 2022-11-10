@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from 'swiper';
 import "swiper/css";
@@ -9,6 +9,13 @@ import { Avatar } from "flowbite-react";
 import './Testimonial.css'
 
 const Testimonial = () => {
+  const [reviews,setReviews] = useState([]);
+
+  useEffect(() =>{
+    fetch('http://localhost:5000/reviews')
+    .then(res => res.json())
+    .then(data => setReviews(data))
+  },[])
   return (
     <div className="py-4">
       <Swiper
@@ -28,71 +35,26 @@ const Testimonial = () => {
             },
           }}
       >
-        <SwiperSlide>
-          <div className="w-full flex items-center shadow rounded-md py-6">
-            <div className="w-1/4">
-              <Avatar
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                rounded={true}
-              />
+        {
+          reviews.map(review => <SwiperSlide key={review._id}>
+            <div className="w-full flex items-center shadow rounded-md py-6">
+              <div className="w-1/4">
+                <Avatar
+                  img={review.userImg}
+                  rounded={true}
+                />
+              </div>
+              <div className="w-3/4">
+                  <h3 className="text-base font-bold">{review.userName}</h3>
+                  <p className="text-sm text-gray-600">
+                      {review.text}
+                  </p>
+              </div>
             </div>
-            <div className="w-3/4">
-                <h3 className="text-base font-bold">Customer One</h3>
-                <p className="text-sm text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, dignissimos!
-                </p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="w-full flex items-center shadow rounded-md py-6">
-            <div className="w-1/4">
-              <Avatar
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                rounded={true}
-              />
-            </div>
-            <div className="w-3/4">
-                <h3 className="text-base font-bold">Customer One</h3>
-                <p className="text-sm text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, dignissimos!
-                </p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="w-full flex items-center shadow rounded-md py-6">
-            <div className="w-1/4">
-              <Avatar
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                rounded={true}
-              />
-            </div>
-            <div className="w-3/4">
-                <h3 className="text-base font-bold">Customer One</h3>
-                <p className="text-sm text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, dignissimos!
-                </p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="w-full flex items-center shadow rounded-md py-6">
-            <div className="w-1/4">
-              <Avatar
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                rounded={true}
-              />
-            </div>
-            <div className="w-3/4">
-                <h3 className="text-base font-bold">Customer One</h3>
-                <p className="text-sm text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, dignissimos!
-                </p>
-            </div>
-          </div>
-        </SwiperSlide>
-
+          </SwiperSlide>)
+        }
+        
+       
       </Swiper>
     </div>
   );

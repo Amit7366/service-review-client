@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { Button, Label, Textarea, TextInput } from "flowbite-react";
 import { AuthContext } from '../../Context/AuthProvider';
 import toast from 'react-hot-toast';
+import useTitle from '../../Hooks/useTitle';
 const AddService = () => {
+  useTitle('Add New Service - Plabon Fitness Trainer')
     const {user} = useContext(AuthContext);
     const addService = (event) =>{
       event.preventDefault();

@@ -2,7 +2,9 @@
 import React from "react";
 import {  useLoaderData } from "react-router-dom";
 import ServiceCard from "../../Components/Services/ServiceCard";
+import useTitle from "../../Hooks/useTitle";
 const Service = () => {
+  useTitle('All Service - Plabon Fitness Trainer')
   const serviceData = useLoaderData();
 
 

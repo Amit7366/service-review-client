@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 import ReviewBox from "./ReviewBox";
 
 const Reviews = () => {
-  const { user } = useContext(AuthContext);
+  useTitle('Home - Plabon Fitness Trainer')
+  const { user,logOut } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
+
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/reviewsByUser?userId=${user.uid}`)
@@ -22,7 +27,7 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    alert('deleted successfully');
+                    toast.success('deleted successfully');
                     const remaining = reviews.filter(odr => odr._id !== id);
                     setReviews(remaining);
                 }
