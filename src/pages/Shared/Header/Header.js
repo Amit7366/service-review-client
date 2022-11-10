@@ -17,16 +17,12 @@ const Header = () => {
 
   return (
     <Navbar fluid={true} rounded={true}>
-      <Navbar.Brand href="#">
-        <img
-          src="https://i.ibb.co/rQ3XWBh/logo.png"
-          className="mr-3 h-6 sm:h-9"
-          alt="Flowbite Logo"
-        />
+      <Link to="/" className="flex">
+        <img className="h-9" src="https://i.ibb.co/rQ3XWBh/logo.png" alt=""/>
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Plabon Fitness Trainer
         </span>
-      </Navbar.Brand>
+      </Link>
       <div className="flex md:order-2 gap-2 items-center">
         {user ? (
           <>

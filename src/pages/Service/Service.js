@@ -1,7 +1,6 @@
-import { Badge, Button } from "flowbite-react";
-import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { PhotoProvider, PhotoView } from "react-photo-view";
+
+import React from "react";
+import {  useLoaderData } from "react-router-dom";
 import ServiceCard from "../../Components/Services/ServiceCard";
 const Service = () => {
   const serviceData = useLoaderData();
