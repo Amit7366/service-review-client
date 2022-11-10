@@ -8,8 +8,8 @@ import { GoogleAuthProvider } from "firebase/auth";
 import useTitle from "../../Hooks/useTitle";
 
 const Login = () => {
-  useTitle('Login - Plabon Fitness Trainer')
-  const { logIn,providerLogin } = useContext(AuthContext);
+  useTitle("Login - Plabon Fitness Trainer");
+  const { logIn, providerLogin } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,13 +18,12 @@ const Login = () => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const handleGoogleSignIn = () =>{
-      
-      providerLogin(googleProvider)
-      .then(result => console.log(result.user))
-      .catch(error => console.log(error))
-      navigate(from,{replace:true});
-  }
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => console.log(result.user))
+      .catch((error) => console.log(error));
+    navigate(from, { replace: true });
+  };
 
   const signIn = (event) => {
     event.preventDefault();
@@ -36,14 +35,34 @@ const Login = () => {
 
     logIn(email, password)
       .then((result) => {
-        
+        const user = result.user;
 
-            form.reset();
-    toast.success('Successfully Loged In')
-    navigate(from, { replace: true });
+        const currentUser = {
+          email: user.email,
+        }
+
+        console.log(currentUser)
+
+        fetch('https://service-review-server-amit7366.vercel.app/jwt',{
+          method: 'POST',
+          headers: {
+            'content-type' : 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          localStorage.setItem('token',data.token)
+
+          form.reset();
+        toast.success("Successfully Loged In");
+
+        navigate(from, { replace: true });
+        })
+        
       })
       .catch((error) => console.error(error));
-
   };
 
   return (
@@ -80,7 +99,7 @@ const Login = () => {
           </Button>
           <h4 className="text-center text-md text-bold">or</h4>
           <Button
-          onClick={handleGoogleSignIn}
+            onClick={handleGoogleSignIn}
             outline={true}
             gradientDuoTone="greenToBlue"
             className="flex items-center mx-auto"

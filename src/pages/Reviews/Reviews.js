@@ -12,7 +12,11 @@ const Reviews = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewsByUser?userId=${user.uid}`)
+    fetch(`https://service-review-server-amit7366.vercel.app/reviewsByUser?userId=${user.uid}`,{
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data.reverse()));
   }, []);
@@ -20,7 +24,7 @@ const Reviews = () => {
   const handleDelete = id => {
     const proceed = window.confirm('Are you sure, you want to delete this review');
     if (proceed) {
-        fetch(`http://localhost:5000/review/${id}`, {
+        fetch(`https://service-review-server-amit7366.vercel.app/review/${id}`, {
             method: 'DELETE',
 
         })

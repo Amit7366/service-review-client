@@ -29,7 +29,7 @@ const AddService = () => {
         userId : uid,
       }
 
-      fetch('http://localhost:5000/service', {
+      fetch('https://service-review-server-amit7366.vercel.app/service', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',

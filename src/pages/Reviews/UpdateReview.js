@@ -23,7 +23,7 @@ const UpdateReview = () => {
             ratings:rating,
             text:text  
         }
-        fetch(`http://localhost:5000/review/${review._id}`, {
+        fetch(`https://service-review-server-amit7366.vercel.app/review/${review._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

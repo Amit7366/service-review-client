@@ -24,7 +24,7 @@ const Details = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewsById?serviceId=${_id}`)
+    fetch(`https://service-review-server-amit7366.vercel.app/reviewsById?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data.reverse()));
   },[reviews]);
@@ -50,7 +50,7 @@ const Details = () => {
       date: new Date().toString()
     };
 
-    fetch('http://localhost:5000/addReview',{
+    fetch('https://service-review-server-amit7366.vercel.app/addReview',{
       method: 'POST',
       headers: {
           'content-type': 'application/json',
