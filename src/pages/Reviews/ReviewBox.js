@@ -1,6 +1,7 @@
 import { Avatar } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ReviewBox = ({ review,handleDelete }) => {
   const { _id, serviceId, serviceName, userName, userImg, text, ratings } =
@@ -39,7 +40,7 @@ const ReviewBox = ({ review,handleDelete }) => {
           </p>
         </div>
         <div className="flex flex-col gap-2 w-1/6 items-end">
-          <FaEdit className="text-teal-400 block"></FaEdit>
+          <Link to={`/reviews/${_id}`}><FaEdit className="text-teal-400 block"></FaEdit></Link>
           <FaTrashAlt onClick={() => handleDelete(_id)} className="text-orange-600 block"></FaTrashAlt>
         </div>
       </div>
