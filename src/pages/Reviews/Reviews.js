@@ -12,10 +12,28 @@ const Reviews = () => {
       .then((data) => setReviews(data.reverse()));
   }, []);
 
+  const handleDelete = id => {
+    const proceed = window.confirm('Are you sure, you want to delete this review');
+    if (proceed) {
+        fetch(`http://localhost:5000/review/${id}`, {
+            method: 'DELETE',
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    alert('deleted successfully');
+                    const remaining = reviews.filter(odr => odr._id !== id);
+                    setReviews(remaining);
+                }
+            })
+    }
+}
+
   return (
     <div className="my-4 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3 px-4">
       {
-        reviews.map(review => <ReviewBox key={review._id} review={review}></ReviewBox>)
+        reviews.map(review => <ReviewBox key={review._id} review={review} handleDelete={handleDelete}></ReviewBox>)
       }
     </div>
   );

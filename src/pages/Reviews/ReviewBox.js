@@ -2,7 +2,7 @@ import { Avatar } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const ReviewBox = ({ review }) => {
+const ReviewBox = ({ review,handleDelete }) => {
   const { _id, serviceId, serviceName, userName, userImg, text, ratings } =
     review;
     const [service,setService] = useState({});
@@ -40,7 +40,7 @@ const ReviewBox = ({ review }) => {
         </div>
         <div className="flex flex-col gap-2 w-1/6 items-end">
           <FaEdit className="text-teal-400 block"></FaEdit>
-          <FaTrashAlt className="text-orange-600 block"></FaTrashAlt>
+          <FaTrashAlt onClick={() => handleDelete(_id)} className="text-orange-600 block"></FaTrashAlt>
         </div>
       </div>
     </div>
