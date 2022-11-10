@@ -31,9 +31,14 @@ const Reviews = () => {
 }
 
   return (
-    <div className="my-4 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3 px-4">
+    <div>
       {
-        reviews.map(review => <ReviewBox key={review._id} review={review} handleDelete={handleDelete}></ReviewBox>)
+        reviews.length > 0 ? 
+        <div className="my-4 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3 px-4">
+        {reviews.map(review => <ReviewBox key={review._id} review={review} handleDelete={handleDelete}></ReviewBox>)}
+        </div>
+        :
+        <p className="text-orange-500 font-bold text-center">No review Found</p>
       }
     </div>
   );
