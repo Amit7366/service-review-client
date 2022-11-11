@@ -9,7 +9,7 @@ const ReviewBox = ({ review,handleDelete }) => {
     const [service,setService] = useState({});
 
     useEffect(() =>{
-        fetch(`https://service-review-server-amit7366.vercel.app/service/${serviceId}`)
+        fetch(`http://localhost:5000/service/${serviceId}`)
         .then(res => res.json())
         .then(data => setService(data))
     },[])

@@ -43,7 +43,7 @@ const Login = () => {
 
         console.log(currentUser)
 
-        fetch('https://service-review-server-amit7366.vercel.app/jwt',{
+        fetch('http://localhost:5000/jwt',{
           method: 'POST',
           headers: {
             'content-type' : 'application/json'
