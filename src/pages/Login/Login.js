@@ -20,9 +20,35 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
-      .then((result) => console.log(result.user))
+    .then((result) => {
+      const user = result.user;
+
+      const currentUser = {
+        userId: user.uid,
+      }
+
+      console.log(currentUser)
+
+      fetch('https://service-review-server-amit7366.vercel.app/jwt',{
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(currentUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        localStorage.setItem('token',data.token)
+
+      toast.success("Successfully Loged In");
+
+      navigate(from, { replace: true });
+      })
+      
+    })
       .catch((error) => console.log(error));
-    navigate(from, { replace: true });
+    
   };
 
   const signIn = (event) => {
@@ -38,7 +64,7 @@ const Login = () => {
         const user = result.user;
 
         const currentUser = {
-          email: user.email,
+          userId: user.uid,
         }
 
         console.log(currentUser)

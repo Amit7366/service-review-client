@@ -12,7 +12,11 @@ const Reviews = () => {
 
 
   useEffect(() => {
-    fetch(`https://service-review-server-amit7366.vercel.app/reviewsByUser?userId=${user.uid}`)
+    fetch(`https://service-review-server-amit7366.vercel.app/reviewsByUser?userId=${user.uid}`,{
+      headers:{
+        authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data.reverse()));
   }, []);
