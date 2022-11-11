@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         },
         {
             path: '/services',
-            loader: () => fetch('http://localhost:5000/allServices'),
+            loader: () => fetch('https://service-review-server-amit7366.vercel.app/allServices'),
             element: <Service></Service>
         },
         {
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
         },
         {
             path: '/reviews/:id',
-            loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`),
+            loader: ({params}) => fetch(`https://service-review-server-amit7366.vercel.app/review/${params.id}`),
             element: <PrivateRoutes><UpdateReview></UpdateReview></PrivateRoutes>
         },
         {
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         },
         {
             path: '/services/:id',
-            loader:({params}) => fetch(`http://localhost:5000/service/${params.id}`),
+            loader:({params}) => fetch(`https://service-review-server-amit7366.vercel.app/service/${params.id}`),
             element: <Deatails></Deatails>
         },
         {
